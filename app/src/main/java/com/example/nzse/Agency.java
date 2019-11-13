@@ -15,8 +15,11 @@ public class Agency {
         return immobilie_list;
     }
 
-    public add_into_arraylist(){
-
+    public void add_into_client_list(Client c){
+        client_list.add(c);
+    }
+    public void add_into_immobilie_list(Immobilie i){
+        immobilie_list.add(i);
     }
 
 }
