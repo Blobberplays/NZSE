@@ -15,8 +15,7 @@ public class Agency {
         return immobilie_list;
     }
 
-    public add_into_arraylist(){
-
+    public void add_into_arraylist(){
     }
 
 }
