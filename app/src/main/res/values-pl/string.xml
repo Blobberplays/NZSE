@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NZSE</string>
+    <string name="ask_text">Kim jesteś?</string>
+    <string name="sel_lang">Polski</string>
+    <string name="estate_broker">Jestem maklerem!</string>
+    <string name="customer">Jestem klientem!</string>
+</resources>
