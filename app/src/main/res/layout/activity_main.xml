@@ -7,25 +7,42 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/text_kunde"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wer bist du?"
-        android:id="@+id/text_kunde"
+        android:layout_marginTop="16dp"
 
+        android:text="Wer bist du?"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_makler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Makler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_kunde" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_kunde"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_kunde"
+        android:layout_marginTop="40dp"
         android:text="Kunde!"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="375dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_kunde">
 
     </androidx.appcompat.widget.AppCompatButton>
 </androidx.constraintlayout.widget.ConstraintLayout>

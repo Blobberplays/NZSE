@@ -1,14 +1,15 @@
 package com.example.nzse;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
 private Button button_kunde;
+
 
 
     @Override
@@ -22,16 +23,26 @@ private Button button_kunde;
             @Override
             public void onClick(View v){
                 openScreenCustomer();
-
             }
+        });
 
-
+        Button button_makler = findViewById(R.id.button_makler);
+        button_makler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openScreenAgent();
+            }
         });
     }
         void openScreenCustomer(){
             Intent intend = new Intent(this ,Kunde.class);
             startActivity(intend);
 
+        }
+
+        void openScreenAgent(){
+            Intent intend = new Intent(this ,Makler.class);
+            startActivity(intend);
         }
 }
 
