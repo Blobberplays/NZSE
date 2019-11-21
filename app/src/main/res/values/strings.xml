@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NZSE</string>
+    <string name="ask_text">who are you?</string>
+    <string name="sel_lang">English</string>
+    <string name="estate_broker">I am a estate broker!</string>
+    <string name="customer">I am a Customer!</string>
+
 </resources>
