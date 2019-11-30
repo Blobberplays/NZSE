@@ -4,5 +4,6 @@
     <string name="sel_lang">English</string>
     <string name="estate_broker">I am a estate broker!</string>
     <string name="customer">I am a Customer!</string>
+    <string name="list_immobilien">show inserts</string>
 
 </resources>

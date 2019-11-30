@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Makler"></activity>
+        <activity android:name=".Estate"></activity>
+        <activity android:name=".Search" />
+        <activity android:name=".Makler" />
         <activity android:name=".Kunde" />
         <activity android:name=".MainActivity">
             <intent-filter>
