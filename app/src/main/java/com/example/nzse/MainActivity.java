@@ -19,7 +19,7 @@ import androidx.core.content.ContextCompat;
 public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int STORAGE_PERMISSION_CODE = 101;
-
+    public static boolean isAgent = false;//maybe declare as interface and implement where needed?
 
     private Button button_kunde, button_makler;
     Agency myAgency;
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         button_kunde.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isAgent = false;
                 openScreenCustomer();
             }
         });
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         button_makler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO based on isAgent create new widgets!
+                isAgent = true;
                 openScreenAgent();
             }
         });
