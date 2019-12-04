@@ -22,24 +22,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Button button_kunde, button_makler;
-    Agency myAgency = new Agency();
+    Agency myAgency;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-        myAgency.immobilie_list.add(new Immobilie(99.99, 1, false, 3, "picture.jpeg"));
-        myAgency.immobilie_list.add(new Immobilie(1000000, 10, true, 4, "picture1.jpeg"));
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+        initImmoData();
+        checkAllPermissions();
+
         button_kunde = findViewById(R.id.button_kunde);
         button_kunde.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 openScreenCustomer();
@@ -53,12 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 openScreenAgent();
             }
         });
-        checkPermission(Manifest.permission.CAMERA,CAMERA_PERMISSION_CODE);
-        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,STORAGE_PERMISSION_CODE);
-        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,STORAGE_PERMISSION_CODE);
+
 
     }
-
+//views
     void openScreenCustomer() {
         Intent intend = new Intent(this, Kunde.class).
                 putExtra("test_string", "das ist ein test String von MainActivity Intend").putExtra("Agency", myAgency);
@@ -66,16 +61,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intend);
 
     }
-
     void openScreenAgent() {
         Intent intend = new Intent(this, Makler.class);
         startActivity(intend);
 
     }
 
-
-    public void checkPermission(String permission, int requestCode)
-    {
+//init
+    public void checkPermission(String permission, int requestCode) {
         if (ContextCompat.checkSelfPermission(MainActivity.this, permission)
                 == PackageManager.PERMISSION_DENIED) {
 
@@ -91,10 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         }
     }
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode,
                         permissions,
                         grantResults);
@@ -131,7 +121,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    public void initImmoData(){
+        myAgency = new Agency();
+        myAgency.immobilie_list.add(new Immobilie(99.99, 1, false, 3, "picture.jpeg"));
+        myAgency.immobilie_list.add(new Immobilie(1000000, 10, true, 4, "picture1.jpeg"));
 
+    }
+    public void checkAllPermissions(){
+        checkPermission(Manifest.permission.CAMERA,CAMERA_PERMISSION_CODE);
+        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,STORAGE_PERMISSION_CODE);
+        checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE,STORAGE_PERMISSION_CODE);
+    }
 
 }
 
