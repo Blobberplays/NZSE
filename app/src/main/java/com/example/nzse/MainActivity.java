@@ -1,15 +1,12 @@
 package com.example.nzse;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,15 +55,15 @@ public class MainActivity extends AppCompatActivity {
     }
 //views
     void openScreenCustomer() {
-        Intent intend = new Intent(this, Kunde.class).
+        Intent intent = new Intent(this, Kunde.class).
                 putExtra("test_string", "das ist ein test String von MainActivity Intend").putExtra("Agency", myAgency);
 
-        startActivity(intend);
+        startActivity(intent);
 
     }
     void openScreenAgent() {
-        Intent intend = new Intent(this, Makler.class);
-        startActivity(intend);
+        Intent intent = new Intent(this, Makler.class);
+        startActivity(intent);
 
     }
 
@@ -126,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void initImmoData(){
         myAgency = new Agency();
-        myAgency.immobilie_list.add(new Immobilie(99.99, 1, false, 3, "picture.jpeg"));
-        myAgency.immobilie_list.add(new Immobilie(1000000, 10, true, 4, "picture1.jpeg"));
+        myAgency.immobilie_list.add(new Immobilie(99.99, 1, false, 3, "picture.jpeg", false, false));
+        myAgency.immobilie_list.add(new Immobilie(1000000, 10, true, 4, "picture1.jpeg", true, true));
 
     }
     public void checkAllPermissions(){
