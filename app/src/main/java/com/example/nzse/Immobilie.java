@@ -1,25 +1,31 @@
 package com.example.nzse;
+
+import java.io.Serializable;
 import java.lang.String;
 
-public class Immobilie {
+public class Immobilie implements Serializable {
 
-    double price;
-    double rooms_count;
-    boolean buy = false;
-    double provision;
-    String picture;
+    private double price;
+    private double rooms_count;
+    private boolean buy = false;
+    private double provision;
+    private String picture;
+    private int id;
+    private static int idCounter = 0;
 
-   Immobilie(double price, double rooms_count, boolean buy, double provision, String picture)
-    {
-    this.price = 0.0 ;
-    this.rooms_count = 0.0;
-    this.buy = false;
-    this.provision = 2.5;
-    this.picture = "";
+
+    Immobilie(double price, double rooms_count, boolean buy, double provision, String picture) {
+        this.id = idCounter++;
+        this.price = price;
+        this.rooms_count = rooms_count;
+        this.buy = buy;
+        this.provision = provision;
+        this.picture = picture;
 
     }
-
-
+    public int getId() {
+        return id;
+    }
 
     public double getPrice() {
         return price;
@@ -28,7 +34,6 @@ public class Immobilie {
     public void setPrice(double price) {
         this.price = price;
     }
-
 
 
     public double getRooms_count() {
@@ -40,7 +45,6 @@ public class Immobilie {
     }
 
 
-
     public boolean isBuy() {
         return buy;
     }
@@ -50,7 +54,6 @@ public class Immobilie {
     }
 
 
-
     public double getProvision() {
         return provision;
     }
@@ -58,7 +61,6 @@ public class Immobilie {
     public void setProvision(double provision) {
         this.provision = provision;
     }
-
 
 
     public String getPicture() {

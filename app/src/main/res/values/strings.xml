@@ -4,5 +4,22 @@
     <string name="sel_lang">English</string>
     <string name="estate_broker">I am a estate broker!</string>
     <string name="customer">I am a Customer!</string>
-
+    <string name="list_immobilien">show inserts</string>
+    <string name="list_saved">show saved</string>
+    <string name="placeholder">placeholder</string>
+    <string name="greetings_client">Hello Client!</string>
+    <string name="rent">Rent</string>
+    <string name="buy">Buy</string>
+    <string name="reset_search">reset</string>
+    <string name="max_price">Max price: </string>
+    <string name="max_price_amt" />
+    <string-array name="group_by">
+        <item>ascending price</item>
+        <item>descending price</item>
+        <item>newest</item>
+        <item>oldest</item>
+    </string-array>
+    <string name="prompt_sort">Sort by</string>
+    <string name="animals_permitted">Animals allowed</string>
+    <string name="no_smoker">no smoker</string>
 </resources>
