@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -18,6 +20,10 @@ public class Kunde extends AppCompatActivity {
     final int min = 1;
     final int avg = (max-min)/2;
 
+    private Immobilie i;
+    private boolean smokeCheck = false;
+    private boolean animalCheck = false;
+    private boolean buy = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,4 +78,43 @@ public class Kunde extends AppCompatActivity {
     }
 
 
+
+
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.checkbox_meat:
+                if (checked)
+                animalCheck = true;
+            else
+                animalCheck = false;
+                break;
+            case R.id.checkbox_cheese:
+                if (checked)
+                smokeCheck = true;
+            else
+                smokeCheck = false;
+                break;
+            // TODO: Veggie sandwich
+        }
+    }
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_pirates:
+                if (checked)
+                    buy = false;
+                    break;
+            case R.id.radio_ninjas:
+                if (checked)
+                    buy = true;
+                    break;
+        }
+    }
 }
