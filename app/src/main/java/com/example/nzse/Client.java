@@ -17,7 +17,4 @@ public class Client {
         this.agent = agent;
     }
 
-
-
-
 }
