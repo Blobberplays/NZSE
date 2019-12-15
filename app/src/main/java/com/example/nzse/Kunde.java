@@ -32,8 +32,6 @@ public class Kunde extends AppCompatActivity {
         display_search = findViewById(R.id.button_list_immobilien);
         price_SeekBar = findViewById(R.id.simpleSeekBar);
         seekBarValue = findViewById(R.id.display_price);
-
-
         display_search.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -41,8 +39,6 @@ public class Kunde extends AppCompatActivity {
                 openScreenSearch();
             }
         });
-
-
         seekbarSet();
     }
 
@@ -54,7 +50,7 @@ public class Kunde extends AppCompatActivity {
         Intent intend = new Intent(this, Search.class).
                 putExtra("test_string", "das kommt von Kunde").
                 putExtra("Agency", getIntent().getSerializableExtra("Agency"));
-                putExtra("Agency",getIntent().getSerializableExtra("Agency"));
+                intend.putExtra("Agency", getIntent().getSerializableExtra("Agency"));
                 intend.putExtra("anmialCheck", animalCheck);
                 intend.putExtra("smokeCheck", smokeCheck);
                 intend.putExtra("buyCheck", buy);
