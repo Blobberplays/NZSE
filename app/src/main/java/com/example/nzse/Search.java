@@ -1,15 +1,63 @@
 package com.example.nzse;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Search extends AppCompatActivity {
+import java.util.ArrayList;
 
-    Agency local_agency;
+public class Search extends AppCompatActivity {
+    ArrayList<Immobilie> dataArrayList = new ArrayList<Immobilie>(){
+        {
+            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
+            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
+            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
+            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
+            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
+            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
+
+
+            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+
+
+        //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView =  (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(dataArrayList);
+
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Agency local_agency;
     Immobilie m0,m1;
 
     @Override
@@ -44,5 +92,4 @@ public class Search extends AppCompatActivity {
                 .putExtra("Estate0",m0)
                 .putExtra("Estate1",m1);
         startActivity(EstateOpen);
-    }
-}
+    }*/
