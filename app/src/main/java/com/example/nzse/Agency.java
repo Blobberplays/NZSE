@@ -76,8 +76,7 @@ public class Agency implements Serializable {
                 object.put("provision", im.getProvision());
                 jsonarray.put(object);
             }
-
-
+            
             myOutWriter.append(jsonarray.toString());
             myOutWriter.close();
             fOut.close();
@@ -87,6 +86,8 @@ public class Agency implements Serializable {
             Toast.makeText(c, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }
 
 
