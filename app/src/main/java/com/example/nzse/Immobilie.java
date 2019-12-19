@@ -14,6 +14,27 @@ public class Immobilie implements Serializable {
     private static int idCounter = 0;
     private boolean smoke;
     private boolean animals;
+    private boolean intrested;
+
+    public boolean isIntrested() {
+        return intrested;
+    }
+
+    public void setIntrested(boolean intrested) {
+        this.intrested = intrested;
+    }
+
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
 
 
 
@@ -36,7 +57,20 @@ public class Immobilie implements Serializable {
         this.picture = picture;
         this.smoke = smoke;
         this.animals = animals;
+        intrested=false;
 
+    }
+    Immobilie(double price, double rooms_count, boolean buy, double provision, String picture, boolean smoke, boolean animals,String description) {
+        this.id = idCounter++;
+        this.price = price;
+        this.rooms_count = rooms_count;
+        this.buy = buy;
+        this.provision = provision;
+        this.picture = picture;
+        this.smoke = smoke;
+        this.animals = animals;
+        this.description = description;
+        intrested=false;
     }
     public int getId() {
         return id;

@@ -2,15 +2,43 @@
     android:id="@+id/searchRowItem"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeightLarge"
-    android:background="@drawable/ic_launcher_foreground">
+    android:background="@color/colorBrightYellow">
+
+    <ImageView
+        android:id="@+id/pictureForRow"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorBlackYellow"
+        android:contentDescription="@string/immobilepicture"
+        android:src="@drawable/haus" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toEndOf="@id/pictureForRow">
+
+        <TextView
+            android:id="@+id/ImmobileIdRow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="1dp"
+
+            android:gravity="top"
+            android:text="@string/DescriptionRow"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/DescriptionTextRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+            android:textSize="16sp" />
 
 
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/ImmobileID"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:textSize="16sp"/>
 
 </RelativeLayout>

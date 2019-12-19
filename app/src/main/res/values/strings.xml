@@ -22,4 +22,6 @@
     <string name="prompt_sort">Sort by</string>
     <string name="animals_permitted">Animals allowed</string>
     <string name="no_smoker">no smoker</string>
+    <string name="immobilepicture">ImmobilePicture</string>
+    <string name="DescriptionRow">Description: </string>
 </resources>

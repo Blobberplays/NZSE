@@ -12,17 +12,24 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 public class Search extends AppCompatActivity {
-    ArrayList<Immobilie> dataArrayList = new ArrayList<Immobilie>(){
+    public RecyclerViewAdapter getAdapter() {
+        return adapter;
+    }
+
+    RecyclerViewAdapter adapter;
+    ArrayList<Immobilie> dataArrayList = new ArrayList<Immobilie>() {
         {
-            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
-            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
-            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
-            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
-            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
-            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
-
-
-            add(new Immobilie(100,20,true,4,"haus.jpeg",false,true));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "examplesfddfdddddfdfdfdfdfdfffffffffffffffffffff description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
+            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
         }
     };
 
@@ -31,15 +38,20 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        Agency a = (Agency) getIntent().getSerializableExtra("Agency");
+        Intent intend = new Intent(this, RecyclerViewAdapter.class).
+                putExtra("Agency", getIntent().getSerializableExtra("Agency"));
 
         //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        RecyclerView recyclerView =  (RecyclerView) findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(dataArrayList);
-
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(dataArrayList);
+        adapter = new RecyclerViewAdapter(a.getImmobilie_list());
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+
     }
 
 }
