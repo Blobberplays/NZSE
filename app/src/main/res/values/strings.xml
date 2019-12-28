@@ -24,4 +24,8 @@
     <string name="no_smoker">no smoker</string>
     <string name="immobilepicture">ImmobilePicture</string>
     <string name="DescriptionRow">Description: </string>
+    <string name="change">change</string>
+    <string name="buy_rent">Buy/Rent:</string>
+    <string name="room">Room:</string>
+    <string name="price">Price:</string>
 </resources>

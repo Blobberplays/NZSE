@@ -2,8 +2,10 @@ package com.example.nzse;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Estate extends AppCompatActivity {
@@ -17,12 +19,15 @@ public class Estate extends AppCompatActivity {
         TextView price = findViewById(R.id.price);
         TextView buyRent = findViewById(R.id.buyrent);
         TextView rooms = findViewById(R.id.rooms);
-        TextView picture = findViewById(R.id.picture);
+        ImageView picture = findViewById(R.id.image);
         Immobilie estateIntent = (Immobilie) getIntent().getSerializableExtra("Estate0");
 
         price.setText(Double.toString(estateIntent.getPrice()));
         buyRent.setText(Boolean.toString(estateIntent.isBuy()));
         rooms.setText(Double.toString(estateIntent.getRooms_count()));
-        picture.setText(estateIntent.getPicture());
+
+
+        int id = this.getResources().getIdentifier(estateIntent.getPicture(), "drawable", this.getPackageName());
+        picture.setImageResource(id);
     }
 }

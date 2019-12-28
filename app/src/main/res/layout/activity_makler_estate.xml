@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="10dp"
-        android:text="Preis: "></TextView>
+        android:text="@string/price"></TextView>
 
     <TextView
         android:id="@+id/rooms"
@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price"
         android:layout_marginLeft="10dp"
-        android:text="Zimmer: ">
+        android:text="@string/room">
     </TextView>
 
     <TextView
@@ -49,13 +49,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rooms"
         android:layout_marginLeft="10dp"
-        android:text="Kaufen/Mieten: "></TextView>
+        android:text="@string/buy_rent"></TextView>
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"><Button
-        android:text="bearbeiten"
+        android:text="@string/change"
         android:padding="10dp"
         android:id="@+id/editValue"
         android:layout_width="wrap_content"

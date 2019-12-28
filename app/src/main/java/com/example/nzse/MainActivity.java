@@ -123,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void initImmoData(){
         myAgency = new Agency();
-        myAgency.immobilie_list.add(new Immobilie(99.99, 1, false, 3, "picture.jpeg", false, false));
-        myAgency.immobilie_list.add(new Immobilie(1000000, 10, true, 4, "picture1.jpeg", true, true));
+        myAgency.immobilie_list.add(new Immobilie(99.99, 1, false, 3, "haus", false, false));
+        myAgency.immobilie_list.add(new Immobilie(1000000, 10, true, 4, "haus", true, true));
 
     }
     public void checkAllPermissions(){
