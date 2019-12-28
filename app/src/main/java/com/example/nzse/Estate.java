@@ -27,7 +27,8 @@ public class Estate extends AppCompatActivity {
         rooms.setText(Double.toString(estateIntent.getRooms_count()));
 
 
-        int id = this.getResources().getIdentifier(estateIntent.getPicture(), "drawable", this.getPackageName());
+        String pictureName ="p"+estateIntent.getPicture();
+        int id = this.getResources().getIdentifier(pictureName, "drawable", this.getPackageName());
         picture.setImageResource(id);
     }
 }

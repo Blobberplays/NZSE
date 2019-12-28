@@ -2,6 +2,7 @@ package com.example.nzse;
 
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
@@ -27,9 +28,6 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private ArrayList<Immobilie> listdata;
 
-    String filePath = "/", fName;
-    File fileName;
-
 
     // RecyclerView recyclerView;
     public RecyclerViewAdapter(ArrayList<Immobilie> listdata) {
@@ -49,17 +47,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Immobilie myData = listdata.get(position);
         holder.descriptionText.setText(listdata.get(position).getDescription());
+        Resources res = holder.itemView.getContext().getResources();
+
+
+        String pictureName ="p"+myData.getPicture();
+        int id = res.getIdentifier(pictureName, "drawable", holder.itemView.getContext().getPackageName());
+        holder.imageView.setImageResource(id);
+
         //holder.imageView.setImageDrawable();
 
-
-        try {
-            fileName = new File(Environment.getExternalStorageDirectory(), filePath + "/" + fName);
-            Drawable d = Drawable.createFromPath(fileName.toString());
-            holder.imageView.setImageDrawable(d);
-        } catch (Exception e) {
-            Log.w("RecyclerView", "Image now found....");
-            //System.out.println(e.getMessage());
-        }
 
 
         if (listdata.get(position).isIntrested())
