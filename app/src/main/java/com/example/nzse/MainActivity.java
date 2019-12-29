@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
                     requestCode);
         }
         else {
-            Toast.makeText(MainActivity.this,
+            /*Toast.makeText(MainActivity.this,
                     "Permission already granted",
                     Toast.LENGTH_SHORT)
-                    .show();
+                    .show();*/
         }
     }
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -123,13 +123,17 @@ public class MainActivity extends AppCompatActivity {
     }
     public void initImmoData(){
         myAgency = new Agency();
+        /*
+
         myAgency.immobilie_list.add(new Immobilie(99.99, 1, false, 3, true, false,"this is rent"));
         myAgency.immobilie_list.add(new Immobilie(500000, 10, true, 4, true, false,"this is buy"));
         myAgency.immobilie_list.add(new Immobilie(1200.99, 1, false, 3, false, false,"this is rent"));
         myAgency.immobilie_list.add(new Immobilie(900000, 10, true, 4, false, false,"this is buy"));
         myAgency.immobilie_list.add(new Immobilie(400.99, 1, false, 3, true, true,"this is rent"));
         myAgency.immobilie_list.add(new Immobilie(100000, 10, true, 4, true, true,"this is buy"));
-
+        
+         */
+        myAgency.load(this);
     }
     public void checkAllPermissions(){
         checkPermission(Manifest.permission.CAMERA,CAMERA_PERMISSION_CODE);

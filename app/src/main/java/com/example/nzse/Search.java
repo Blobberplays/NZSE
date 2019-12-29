@@ -7,16 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
@@ -30,21 +22,6 @@ public class Search extends AppCompatActivity {
 
 
     RecyclerViewAdapter adapter;
-    ArrayList<Immobilie> dataArrayList = new ArrayList<Immobilie>() {
-        {
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "examplesfddfdddddfdfdfdfdfdfffffffffffffffffffff description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +31,9 @@ public class Search extends AppCompatActivity {
 
         a = (Agency) getIntent().getSerializableExtra("Agency");
         pref = this.getSharedPreferences("searchPreferences", Context.MODE_PRIVATE);
-        //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(dataArrayList);
+
 
         //prep Arraylist
         boolean animalAllowed = pref.getBoolean("animalAllowed", false);
@@ -75,7 +52,7 @@ public class Search extends AppCompatActivity {
         } else {
 
             for (final Immobilie immo : a.getImmobilie_list()) {
-                if (animalAllowed == immo.isAnimals() && smokeAllowed == immo.isSmoke() && buyAllowed == immo.isBuy() || )
+                if (animalAllowed == immo.isAnimals() && smokeAllowed == immo.isSmoke() && buyAllowed == immo.isBuy() )
 
 
 
@@ -87,7 +64,7 @@ public class Search extends AppCompatActivity {
             }
         }
 
-        //adapter = new RecyclerViewAdapter(a.getImmobilie_list());
+
         adapter = new RecyclerViewAdapter(filteredImm);
 
 
@@ -121,7 +98,14 @@ public class Search extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        a.store(this);
+    }
 }
+
 
 
 /*Agency local_agency;

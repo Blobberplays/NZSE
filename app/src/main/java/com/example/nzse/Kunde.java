@@ -154,6 +154,11 @@ public class Kunde extends AppCompatActivity {
             }
         }
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        a.store(this);
+    }
 
 
     void seekbarSet() {
