@@ -25,7 +25,6 @@ public class Immobilie implements Serializable {
     }
 
 
-
     public String getDescription() {
         return description;
     }
@@ -35,8 +34,6 @@ public class Immobilie implements Serializable {
     }
 
     private String description;
-
-
 
 
     /*Immobilie(double price, double rooms_count, boolean buy, double provision, String picture) {
@@ -57,10 +54,11 @@ public class Immobilie implements Serializable {
         this.picture = picture;
         this.smoke = smoke;
         this.animals = animals;
-        intrested=false;
+        intrested = false;
 
     }
-    Immobilie(double price, double rooms_count, boolean buy, double provision, String picture, boolean smoke, boolean animals,String description) {
+
+    Immobilie(double price, double rooms_count, boolean buy, double provision, String picture, boolean smoke, boolean animals, String description) {
         this.id = idCounter++;
         this.price = price;
         this.rooms_count = rooms_count;
@@ -70,9 +68,10 @@ public class Immobilie implements Serializable {
         this.smoke = smoke;
         this.animals = animals;
         this.description = description;
-        intrested=false;
+        intrested = false;
     }
-    Immobilie(double price, double rooms_count, boolean buy, double provision, boolean smoke, boolean animals,String description) {
+
+    Immobilie(double price, double rooms_count, boolean buy, double provision, boolean smoke, boolean animals, String description) {
         this.id = idCounter++;
         this.price = price;
         this.rooms_count = rooms_count;
@@ -82,8 +81,23 @@ public class Immobilie implements Serializable {
         this.smoke = smoke;
         this.animals = animals;
         this.description = description;
-        intrested=false;
+        intrested = false;
     }
+
+    Immobilie(double price, double rooms_count, boolean buy, double provision, String picture, boolean smoke, boolean animals, String description, boolean Intrested) {
+        this.id = idCounter++;
+        this.price = price;
+        this.rooms_count = rooms_count;
+        this.buy = buy;
+        this.provision = provision;
+        this.picture = Integer.toString(id);
+        this.picture = picture;
+        this.smoke = smoke;
+        this.animals = animals;
+        this.description = description;
+        this.intrested = Intrested;
+    }
+
     public int getId() {
         return id;
     }

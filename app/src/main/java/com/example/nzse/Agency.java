@@ -60,31 +60,34 @@ public class Agency implements Serializable {
     }
 
 
-    public  void store(Context c) {
+    public void store(Context c) {
         try {
             File myFile = new File(Environment.getExternalStorageDirectory().getPath()
                     + "/" + "Immobilien.txt");
             FileOutputStream fOut = new FileOutputStream(myFile);
             OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
             JSONArray jsonarray = new JSONArray();
-            for(int i= 0; i< immobilie_list.size(); i++) {
+            for (int i = 0; i < immobilie_list.size(); i++) {
                 JSONObject object = new JSONObject();
                 Immobilie im = immobilie_list.get(i);
                 object.put("id", im.getId());
                 object.put("preis", im.getPrice());
                 object.put("raumzahl", im.getRooms_count());
-                object.put("bildquelle", im.getPrice());
+                object.put("bildquelle", im.getPicture());
                 object.put("buy", im.isBuy());
                 object.put("smoke", im.isSmoke());
                 object.put("animals", im.isAnimals());
                 object.put("provision", im.getProvision());
+                object.put("description",im.getDescription());
+                object.put("Intrested",im.isIntrested());
                 jsonarray.put(object);
             }
-            
+
             myOutWriter.append(jsonarray.toString());
             myOutWriter.close();
             fOut.close();
-            Toast.makeText(c, immobilie_list.size() +" werden gespeichert!",
+
+            Toast.makeText(c, immobilie_list.size() + " werden gespeichert!",
                     Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(c, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -115,6 +118,47 @@ public class Agency implements Serializable {
     Toast.makeText(c, e.getMessage(), Toast.LENGTH_SHORT).show();
     e.printStackTrace();
     }
+    }
+    public void load(Context c) {
+        String alleausgaben = "";
+        try {
+            File myFile =
+                    new File(Environment.getExternalStorageDirectory().getPath() +
+                            "/" + "Immobilien.txt");
+            System.out.println("*** Load:" + myFile.toString());
+
+            FileInputStream fIn = new FileInputStream(myFile);
+            BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn, StandardCharsets.UTF_8.name()));
+            String line;
+            while ((line = myReader.readLine()) != null) {
+                alleausgaben += line;
+            }
+            JSONArray jsonArray = new JSONArray(alleausgaben);
+            Toast.makeText(c, "Anzahl Adressen: " + jsonArray.length(),
+                    Toast.LENGTH_SHORT).show();
+
+            Immobilie a;
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                a = new Immobilie(
+                        jsonObject.getDouble("preis"),
+                        jsonObject.getDouble("raumzahl"),
+                        jsonObject.getBoolean("buy"),
+                        jsonObject.getDouble("provision"),
+                        jsonObject.getString("bildquelle"),
+                        jsonObject.getBoolean("smoke"),
+                        jsonObject.getBoolean("animals"),
+                        jsonObject.getString("description"),
+                        jsonObject.getBoolean("Intrested"));
+                add_into_immobilie_list(a);
+            }
+
+            Toast.makeText(c, immobilie_list.size() + " werden geladen!",
+                    Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(c, e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.ArrayList;
 
 public class Search extends AppCompatActivity {
@@ -21,21 +22,6 @@ public class Search extends AppCompatActivity {
 
 
     RecyclerViewAdapter adapter;
-    ArrayList<Immobilie> dataArrayList = new ArrayList<Immobilie>() {
-        {
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "examplesfddfdddddfdfdfdfdfdfffffffffffffffffffff description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-            add(new Immobilie(100, 20, true, 4, "haus.jpeg", false, true, "example description"));
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +31,9 @@ public class Search extends AppCompatActivity {
 
         a = (Agency) getIntent().getSerializableExtra("Agency");
         pref = this.getSharedPreferences("searchPreferences", Context.MODE_PRIVATE);
-        //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(dataArrayList);
+
 
         //prep Arraylist
         boolean animalAllowed = pref.getBoolean("animalAllowed", false);
@@ -74,6 +60,7 @@ public class Search extends AppCompatActivity {
 
             for (final Immobilie immo : a.getImmobilie_list()) {
                 if (animalAllowed == immo.isAnimals() && smokeAllowed == immo.isSmoke() && buyAllowed == immo.isBuy())
+                if (animalAllowed == immo.isAnimals() && smokeAllowed == immo.isSmoke() && buyAllowed == immo.isBuy() )
 
 
 
@@ -85,7 +72,7 @@ public class Search extends AppCompatActivity {
             }
         }*/
 
-        //adapter = new RecyclerViewAdapter(a.getImmobilie_list());
+
         adapter = new RecyclerViewAdapter(filteredImm);
 
 
@@ -167,7 +154,14 @@ public class Search extends AppCompatActivity {
         finish();
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        a.store(this);
+    }
 }
+
 
 
 /*Agency local_agency;
