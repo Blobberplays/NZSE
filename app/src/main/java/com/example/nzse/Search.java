@@ -1,22 +1,13 @@
 package com.example.nzse;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -66,7 +57,14 @@ public class Search extends AppCompatActivity {
 
         ArrayList<Immobilie> filteredImm = new ArrayList<>();
 
-        if (marked) {
+
+        checkAnimals(filteredImm, animalAllowed);
+        checkSmoke(filteredImm, smokeAllowed);
+        checkBuy(filteredImm, buyAllowed);
+        checkMarked(filteredImm, marked);
+
+
+        /*if (marked) {
             for (final Immobilie immo : a.getImmobilie_list()) {
                 if (marked == immo.isIntrested()) {
                     filteredImm.add(immo);
@@ -75,7 +73,7 @@ public class Search extends AppCompatActivity {
         } else {
 
             for (final Immobilie immo : a.getImmobilie_list()) {
-                if (animalAllowed == immo.isAnimals() && smokeAllowed == immo.isSmoke() && buyAllowed == immo.isBuy() || )
+                if (animalAllowed == immo.isAnimals() && smokeAllowed == immo.isSmoke() && buyAllowed == immo.isBuy())
 
 
 
@@ -85,7 +83,7 @@ public class Search extends AppCompatActivity {
                     filteredImm.add(immo);
                 }
             }
-        }
+        }*/
 
         //adapter = new RecyclerViewAdapter(a.getImmobilie_list());
         adapter = new RecyclerViewAdapter(filteredImm);
@@ -96,6 +94,49 @@ public class Search extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
+    }
+
+
+    public ArrayList checkAnimals(ArrayList filteredImm, boolean animalAllowed){
+        for (final Immobilie immo : a.getImmobilie_list()) {
+            if (immo.isAnimals() == animalAllowed) {
+                filteredImm.add(immo);
+            }
+        }
+        return filteredImm;
+    }
+
+    public ArrayList checkSmoke(ArrayList filteredImm, boolean smokeAllowed){
+        if (filteredImm.size()>0) {
+            for (int i = 0; i < filteredImm.size(); i++) {
+                if (!filteredImm.get(i).equals(smokeAllowed)) ;
+                filteredImm.remove(i);
+                i--;
+            }
+        }
+        return filteredImm;
+    }
+
+    public ArrayList checkBuy(ArrayList filteredImm, boolean buyAllowed){
+        if (filteredImm.size()>0) {
+            for (int i = 0; i < filteredImm.size(); i++) {
+                if (!filteredImm.get(i).equals(buyAllowed)) ;
+                filteredImm.remove(i);
+                i--;
+            }
+        }
+        return filteredImm;
+    }
+
+    public ArrayList checkMarked(ArrayList filteredImm, boolean marked){
+        if (filteredImm.size()>0) {
+            for (int i = 0; i < filteredImm.size(); i++) {
+                if (!filteredImm.get(i).equals(marked)) ;
+                filteredImm.remove(i);
+                i--;
+            }
+        }
+        return filteredImm;
     }
 
     /*@Override
@@ -112,6 +153,10 @@ public class Search extends AppCompatActivity {
 
     }*/
 
+
+
+
+
     @Override
     public void onBackPressed() {//back produces RESULT_CANCELED
         //super.onBackPressed();
@@ -121,6 +166,7 @@ public class Search extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
+
 }
 
 

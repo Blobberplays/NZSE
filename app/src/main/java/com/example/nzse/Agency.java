@@ -7,10 +7,14 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Agency implements Serializable {
@@ -87,6 +91,31 @@ public class Agency implements Serializable {
         }
     }
 
+    public void load(Context c){
+        String alleausgaben = "";
+    try{
+        File myFile = new File(Environment.getExternalStorageDirectory().getPath() + "/NZSE/" + "Immobilien.txt");
+
+        FileInputStream fIn = new FileInputStream(myFile);
+        BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn, StandardCharsets.UTF_8.name()));
+
+        String line;
+        while ((line=myReader.readLine())!=null) {
+            alleausgaben += line;
+        }
+        JSONArray jsonArray = new JSONArray(alleausgaben);
+        Toast.makeText(c, "Anzahl Immobilien: " + jsonArray.length(), Toast.LENGTH_SHORT).show();
+        Immobilie im;
+        for (int i = 0; i < jsonArray.length(); i++){
+            JSONObject jsonObject;
+        }
+
+    }
+    catch (Exception e) {
+    Toast.makeText(c, e.getMessage(), Toast.LENGTH_SHORT).show();
+    e.printStackTrace();
+    }
+    }
 
 }
 
