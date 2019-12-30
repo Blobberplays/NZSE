@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     void openScreenAgent() {
-        Intent intent = new Intent(this, Makler.class);
+        Intent intent = new Intent(this, Makler.class).putExtra("Agency", myAgency);
         startActivity(intent);
 
     }

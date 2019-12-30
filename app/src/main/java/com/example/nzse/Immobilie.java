@@ -83,6 +83,18 @@ public class Immobilie implements Serializable {
         this.description = description;
         intrested = false;
     }
+    Immobilie(double price, double rooms_count,  double provision, boolean buy, boolean smoke, boolean animals, String description) {
+        this.id = idCounter++;
+        this.price = price;
+        this.rooms_count = rooms_count;
+        this.buy = buy;
+        this.provision = provision;
+        this.picture = Integer.toString(id);
+        this.smoke = smoke;
+        this.animals = animals;
+        this.description = description;
+        intrested = false;
+    }
 
     Immobilie(double price, double rooms_count, boolean buy, double provision, String picture, boolean smoke, boolean animals, String description, boolean Intrested) {
         this.id = idCounter++;
@@ -91,7 +103,7 @@ public class Immobilie implements Serializable {
         this.buy = buy;
         this.provision = provision;
         this.picture = Integer.toString(id);
-        this.picture = picture;
+        //this.picture = picture;
         this.smoke = smoke;
         this.animals = animals;
         this.description = description;

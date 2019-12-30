@@ -28,4 +28,9 @@
     <string name="buy_rent">Buy/Rent:</string>
     <string name="room">Room:</string>
     <string name="price">Price:</string>
+    <string name="greetings_makler">Welcome to your Office!</string>
+    <string name="add_new">Insert new estate</string>
+    <string name="createNew">Create new Estate</string>
+    <string name="done">Done!</string>
+    <string name="provison">Provison: </string>
 </resources>
