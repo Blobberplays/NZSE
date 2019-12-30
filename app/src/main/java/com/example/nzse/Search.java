@@ -44,10 +44,10 @@ public class Search extends AppCompatActivity {
         ArrayList<Immobilie> filteredImm = new ArrayList<>();
 
 
-        checkAnimals(filteredImm, animalAllowed);
-        checkSmoke(filteredImm, smokeAllowed);
-        checkBuy(filteredImm, buyAllowed);
-        checkMarked(filteredImm, marked);
+        filteredImm = checkAnimals(filteredImm, animalAllowed);
+        /*filteredImm = checkSmoke(filteredImm, smokeAllowed);
+        filteredImm = checkBuy(filteredImm, buyAllowed);
+        filteredImm = checkMarked(filteredImm, marked);*/
 
 
         /*if (marked) {

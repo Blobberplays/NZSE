@@ -172,12 +172,19 @@ public class Makler extends AppCompatActivity {
             }
         }
     }
+    public void onBackPressed() {//back produces RESULT_CANCELED
+        //super.onBackPressed();
+        Intent intent = new Intent().putExtra(
+                "Agency", getIntent().getSerializableExtra("Agency"));
 
+        setResult(RESULT_OK, intent);
+        finish();
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        a.store(this);
+        //a.store(getApplicationContext());
     }
 
 

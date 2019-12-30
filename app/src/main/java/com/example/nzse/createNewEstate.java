@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class createNewEstate extends AppCompatActivity {
 
@@ -33,9 +34,14 @@ public class createNewEstate extends AppCompatActivity {
         Intent myIntent = getIntent();
         a = (Agency) myIntent.getSerializableExtra("Agency");
 
-        done.setOnClickListener(new View.OnClickListener(){
+        done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (price.getText().toString().isEmpty() || room.getText().toString().isEmpty() || provision.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(),"Preis, Räume oder Provision darf nicht leer sein!",Toast.LENGTH_SHORT ).show();
+                }else{
+
                 Immobilie i = new Immobilie(
                         Double.valueOf(price.getText().toString()),
                         Double.valueOf(room.getText().toString()),
@@ -51,7 +57,7 @@ public class createNewEstate extends AppCompatActivity {
 
                 setResult(RESULT_OK, intent);
                 finish();
-
+                }
 
             }
         });

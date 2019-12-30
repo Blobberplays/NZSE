@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buy">Kaufen</string>
+    <string name="DescriptionRow">"Beschreibung: "</string>
+    <string name="add_new">Erstelle neue Inserat</string>
+    <string name="animals_permitted">Tiere Erlaubt</string>
+    <string name="buy_rent">Kaufen/Mieten</string>
+    <string name="change">änderung</string>
+    <string name="createNew">Erstelle neue Inserat</string>
+    <string name="done">Fertig!</string>
+    <string name="greetings_client">Hallo Kunde!</string>
+    <string name="greetings_makler">Willkommen in Deinen Büro</string>
+    <string name="list_immobilien">Zeige Inserate</string>
+    <string name="list_saved">Gespeichert</string>
+    <string name="max_price">"Maximale Preis: "</string>
+    <string name="no_smoker">NIcht Raucher</string>
+    <string name="price">Preis:</string>
+    <string name="prompt_sort">"Sortiere nach: "</string>
+    <string name="provison">Provision:</string>
+    <string name="rent">Miete</string>
+    <string name="reset_search">Reset</string>
+    <string name="room">Räume</string>
+</resources>

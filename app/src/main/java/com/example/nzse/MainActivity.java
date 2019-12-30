@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,16 +18,16 @@ public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int STORAGE_PERMISSION_CODE = 101;
     public static boolean isAgent = false;//maybe declare as interface and implement where needed?
+    public static final int saveIntentReq = 1000;
 
     private Button button_kunde, button_makler;
     Agency myAgency;
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         initImmoData();
@@ -53,41 +54,64 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-//views
+
+    //views
     void openScreenCustomer() {
-        Intent intent = new Intent(this, Kunde.class).
-                putExtra("test_string", "das ist ein test String von MainActivity Intend").putExtra("Agency", myAgency);
 
-        startActivity(intent);
+        intent = new Intent(this, Kunde.class).putExtra("Agency", myAgency);
+        startActivityForResult(intent, saveIntentReq);
 
     }
+
     void openScreenAgent() {
-        Intent intent = new Intent(this, Makler.class).putExtra("Agency", myAgency);
-        startActivity(intent);
+        intent = new Intent(this, Makler.class).putExtra("Agency", myAgency);
+        startActivityForResult(intent, saveIntentReq);
 
     }
 
-//init
+    @Override
+    protected void onResume() {
+        super.onResume();
+        myAgency.store(getApplicationContext());
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == saveIntentReq) {
+            if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
+                getIntent().putExtra("Agency", data.getSerializableExtra("Agency"));
+                myAgency = (Agency) data.getSerializableExtra("Agency");
+
+            } else {
+                Log.e("Main", "Something went horribly wrong");
+            }
+        }
+    }
+
+    //init
     public void checkPermission(String permission, int requestCode) {
         if (ContextCompat.checkSelfPermission(MainActivity.this, permission)
                 == PackageManager.PERMISSION_DENIED) {
 
             // Requesting the permission
             ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[] { permission },
+                    new String[]{permission},
                     requestCode);
-        }
-        else {
+        } else {
             /*Toast.makeText(MainActivity.this,
                     "Permission already granted",
                     Toast.LENGTH_SHORT)
                     .show();*/
         }
     }
+
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode,
-                        permissions,
-                        grantResults);
+                permissions,
+                grantResults);
 
         if (requestCode == CAMERA_PERMISSION_CODE) {
 
@@ -121,7 +145,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public void initImmoData(){
+
+    public void initImmoData() {
         myAgency = new Agency();
         /*
 
@@ -135,10 +160,11 @@ public class MainActivity extends AppCompatActivity {
          */
         myAgency.load(this);
     }
-    public void checkAllPermissions(){
-        checkPermission(Manifest.permission.CAMERA,CAMERA_PERMISSION_CODE);
-        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,STORAGE_PERMISSION_CODE);
-        checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE,STORAGE_PERMISSION_CODE);
+
+    public void checkAllPermissions() {
+        checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE);
+        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
+        checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
     }
 
 }

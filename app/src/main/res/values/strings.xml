@@ -10,7 +10,7 @@
     <string name="greetings_client">Hello Client!</string>
     <string name="rent">Rent</string>
     <string name="buy">Buy</string>
-    <string name="reset_search">reset</string>
+    <string name="reset_search">Reset</string>
     <string name="max_price">Max price: </string>
     <string name="max_price_amt" />
     <string-array name="group_by">
@@ -19,7 +19,7 @@
         <item>newest</item>
         <item>oldest</item>
     </string-array>
-    <string name="prompt_sort">Sort by</string>
+    <string name="prompt_sort">"Sort by: "</string>
     <string name="animals_permitted">Animals allowed</string>
     <string name="no_smoker">no smoker</string>
     <string name="immobilepicture">ImmobilePicture</string>
@@ -32,5 +32,5 @@
     <string name="add_new">Insert new estate</string>
     <string name="createNew">Create new Estate</string>
     <string name="done">Done!</string>
-    <string name="provison">Provison: </string>
+    <string name="provison">"Provision: "</string>
 </resources>
