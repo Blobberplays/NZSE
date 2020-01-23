@@ -36,41 +36,43 @@ public class Search extends AppCompatActivity {
 
 
         //prep Arraylist
-        boolean animalAllowed = pref.getBoolean("animalAllowed", false);
-        boolean smokeAllowed = pref.getBoolean("smokeAllowed", false);
+        //boolean animalAllowed = pref.getBoolean("animalAllowed", false);
+        //boolean smokeAllowed = pref.getBoolean("smokeAllowed", false);
         boolean buyAllowed = pref.getBoolean("buyAllowed", false);
         boolean marked = pref.getBoolean("marked", false);
 
         ArrayList<Immobilie> filteredImm = new ArrayList<>();
 
 
-        filteredImm = checkAnimals(filteredImm, animalAllowed);
-        /*filteredImm = checkSmoke(filteredImm, smokeAllowed);
-        filteredImm = checkBuy(filteredImm, buyAllowed);
+        //filteredImm = checkAnimals(filteredImm, animalAllowed);
+        //filteredImm = checkSmoke(filteredImm, smokeAllowed);
+        /*filteredImm = checkBuy(filteredImm, buyAllowed);
         filteredImm = checkMarked(filteredImm, marked);*/
 
 
-        /*if (marked) {
+        if (marked) {
             for (final Immobilie immo : a.getImmobilie_list()) {
                 if (marked == immo.isIntrested()) {
                     filteredImm.add(immo);
                 }
             }
         } else {
+            if (buyAllowed) {
 
-            for (final Immobilie immo : a.getImmobilie_list()) {
-                if (animalAllowed == immo.isAnimals() && smokeAllowed == immo.isSmoke() && buyAllowed == immo.isBuy())
-                if (animalAllowed == immo.isAnimals() && smokeAllowed == immo.isSmoke() && buyAllowed == immo.isBuy() )
+                for (final Immobilie immo : a.getImmobilie_list()) {
+                    if (immo.isBuy()) {
+                        filteredImm.add(immo);
+                    }
+                }
+            }else{
 
-
-
-
-
-                {
-                    filteredImm.add(immo);
+                for (final Immobilie immo : a.getImmobilie_list()) {
+                    if (!(immo.isBuy())) {
+                        filteredImm.add(immo);
+                    }
                 }
             }
-        }*/
+        }
 
 
         adapter = new RecyclerViewAdapter(filteredImm);
@@ -84,7 +86,7 @@ public class Search extends AppCompatActivity {
     }
 
 
-    public ArrayList checkAnimals(ArrayList filteredImm, boolean animalAllowed){
+    public ArrayList checkAnimals(ArrayList filteredImm, boolean animalAllowed) {
         for (final Immobilie immo : a.getImmobilie_list()) {
             if (immo.isAnimals() == animalAllowed) {
                 filteredImm.add(immo);
@@ -93,8 +95,8 @@ public class Search extends AppCompatActivity {
         return filteredImm;
     }
 
-    public ArrayList checkSmoke(ArrayList filteredImm, boolean smokeAllowed){
-        if (filteredImm.size()>0) {
+    public ArrayList checkSmoke(ArrayList filteredImm, boolean smokeAllowed) {
+        if (filteredImm.size() > 0) {
             for (int i = 0; i < filteredImm.size(); i++) {
                 if (!filteredImm.get(i).equals(smokeAllowed)) ;
                 filteredImm.remove(i);
@@ -104,8 +106,8 @@ public class Search extends AppCompatActivity {
         return filteredImm;
     }
 
-    public ArrayList checkBuy(ArrayList filteredImm, boolean buyAllowed){
-        if (filteredImm.size()>0) {
+    public ArrayList checkBuy(ArrayList filteredImm, boolean buyAllowed) {
+        if (filteredImm.size() > 0) {
             for (int i = 0; i < filteredImm.size(); i++) {
                 if (!filteredImm.get(i).equals(buyAllowed)) ;
                 filteredImm.remove(i);
@@ -115,8 +117,8 @@ public class Search extends AppCompatActivity {
         return filteredImm;
     }
 
-    public ArrayList checkMarked(ArrayList filteredImm, boolean marked){
-        if (filteredImm.size()>0) {
+    public ArrayList checkMarked(ArrayList filteredImm, boolean marked) {
+        if (filteredImm.size() > 0) {
             for (int i = 0; i < filteredImm.size(); i++) {
                 if (!filteredImm.get(i).equals(marked)) ;
                 filteredImm.remove(i);
@@ -139,9 +141,6 @@ public class Search extends AppCompatActivity {
         //finish()->(Parent)onActivityResult->onDestroy
 
     }*/
-
-
-
 
 
     @Override

@@ -60,6 +60,10 @@ public class Makler extends AppCompatActivity {
         animal = findViewById(R.id.checkbox_animals_new);
         smoker = findViewById(R.id.checkbox_smoker_new);
 
+        price_SeekBar.setActivated(false);
+        seekBarValue.setActivated(false);
+
+
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,6 +211,7 @@ public class Makler extends AppCompatActivity {
             }
 
         });
+
     }
 
 
